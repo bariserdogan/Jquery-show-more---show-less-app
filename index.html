@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="style.css">
+	<!--Öncelikle head tagının içinde jquery kütüphanemizi google cdn olarak çekiyoruz
+	bunun için w3schools veya jquery.com dan faydalanabilirsiniz-->
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var startChar=300; // başlangıçta kaç karakter gösterileceği
+
+			var ucnokta = "..."; // başlangıç metninin sonuna koymak için
+			var moretext="Show more >"; 
+			var lesstext="Show less";
+
+			$(".more").each(function() {
+				var content = $(this).html(); // seçilen nesnenin html() metodu ile içeriğini alıyoruz
+
+				if(content.length>startChar)
+				{
+					var c = content.substring(0, 100); // bu içeriğin gösterilecek kısmını 100 karakter olarak belirliyoruz
+					var h = content.substring(startChar,content.length - startChar);
+
+					var html = c + '<span class="moreellipses">' + ucnokta+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+					$(this).html(html);
+				}
+			});
+
+			$('.morelink').click(function() { // bu kısım linklere tıklandığında yazılarının değişmesi için 
+				if($(this).hasClass('less'))
+				{
+					$(this).removeClass('less');
+					$(this).html(moretext);					
+				}
+				else
+				{
+					$(this).addClass('less');
+					$(this).html(lesstext);
+				}
+				$(this).parent().prev().toggle();
+				$(this).prev().toggle();
+				return false;
+			});
+			
+		});
+	</script>
+</head>
+<body>
+
+	<div class="container">
+	
+			<div id="bolum" class="more">
+			
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse tenetur impedit dolor atque, minus quis rem minima cumque distinctio quaerat molestias consectetur, veniam architecto voluptas? Molestiae eligendi est 
+				
+		
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse tenetur impedit dolor atque, minus quis rem minima cumque distinctio quaerat molestias consectetur, veniam architecto voluptas? Molestiae eligendi est
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem blanditiis unde ex reiciendis temporibus 
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse tenetur impedit dolor atque, minus quis rem minima cumque distinctio quaerat molestias consectetur, veniam architecto voluptas? Molestiae eligendi est
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea asperiores aliquid tempore exercitationem fugit fugiat omnis dolorem adipisci tenetur quasi laborum similique vitae, distinctio quisquam officiis magnam placeat quas, accusamus? 
+					
+			</div>
+			
+			<span class="more">
+				
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse tenetur impedit dolor atque, minus quis rem minima cumque distinctio quaerat molestias consectetur, veniam architecto voluptas? Molestiae eligendi est 
+			
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse tenetur impedit dolor atque, minus quis rem minima cumque distinctio quaerat molestias consectetur, veniam architecto voluptas? Molestiae eligendi est
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem blanditiis unde ex reiciendis temporibus suscipit quia aspernatur possimus perspiciatis atque cupiditate, ab, commodi recusandae impedit nulla
+			
+
+				
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse tenetur impedit dolor atque, minus quis rem minima cumque distinctio quaerat molestias consectetur, veniam architecto voluptas? Molestiae eligendi est
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea asperiores aliquid tempore exercitationem fugit fugiat omnis dolorem adipisci tenetur quasi laborum similique vitae, distinctio quisquam officiis magnam placeat quas, accusamus? 
+				</p>
+			</div>
+			<br>
+			
+
+	</div>
+	
+</body>
+</html>
